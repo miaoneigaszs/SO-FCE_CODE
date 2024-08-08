@@ -16,4 +16,28 @@ The user guide is presented as follow.
 -------------------------------------
 
 #### 1.Data preprocessing
-将
+##### a.下载web会话记录 WebSessionAccessMain2_GenSample_src_data.bt3.txt 到./data文件夹下.
+
+##### b.运行pre_process.py，在./data目录下会生成训练集（X_train.txt, y_train.txt）和测试集(X_test.txt, y_test.txt).
+```
+commond: python pre_process.py
+```
+##### c.运行false_samples.py, 在./data目录下会生成不同比例的低质量训练集（含有错误标注）.
+```
+commond: python false_sample.py
+```
+#### 2.运行对比实验
+##### a.首先编辑train.py, 选择训练样本, 运行代码, 训练好的模型将保存在在models文件夹中.
+Tips: 通过编辑'pd.read_csv()'的参数, 来选择训练样本.
+```
+commond: python train.py
+```
+##### b.然后运行predict.py，获得对比实验的运行结果
+```
+commond: python predict.py
+```
+#### 3.运行SO-FCE方法
+##### 编辑main.py, 选择训练样本, 运行该程序, 获得运行结果
+```
+commond: python main.py
+```
