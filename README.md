@@ -15,29 +15,31 @@ The user guide is presented as follow.
 
 -------------------------------------
 
-#### 1.Data preprocessing
-##### a.下载web会话记录 WebSessionAccessMain2_GenSample_src_data.bt3.txt 到./data文件夹下.
+#### 1. Data preprocessing
+##### a. Download the web session record `WebSessionAccessMain2_GenSample_src_data.bt3.txt` to the `./data` folder.
 
-##### b.运行pre_process.py，在./data目录下会生成训练集（X_train.txt, y_train.txt）和测试集(X_test.txt, y_test.txt).
+##### b. Run `pre_process.py`. The training set (`X_train.txt`, `y_train.txt`) and test set (`X_test.txt`, `y_test.txt`) will be generated in the `./data` directory.
 ```
 commond: python pre_process.py
 ```
-##### c.运行false_samples.py, 在./data目录下会生成不同比例的低质量训练集（含有错误标注）.
+##### c. Run `false_samples.py`. Different proportions of low-quality training sets (containing incorrect labels) will be generated in the `./data` directory.
+
 ```
 commond: python false_sample.py
 ```
-#### 2.运行对比实验
-##### a.首先编辑train.py, 选择训练样本, 运行代码, 训练好的模型将保存在在models文件夹中.
-Tips: 通过编辑'pd.read_csv()'的参数, 来选择训练样本.
+#### 2.Run comparative experiments
+##### a.First, edit `train.py`, select the training samples, and run the code. The trained models will be saved in the `models` folder.
+Tips: Edit the parameters of `pd.read_csv()` to select the training samples.
 ```
 commond: python train.py
 ```
-##### b.然后运行predict.py，获得对比实验的运行结果
+##### b. Then run `predict.py` to obtain the results of the comparative experiments.
 ```
 commond: python predict.py
 ```
-#### 3.运行SO-FCE方法
-##### 编辑main.py, 选择训练样本, 运行该程序, 获得运行结果
+#### 3. Run the SO-FCE method
+##### Edit `main.py`, select the training samples, and run the program to obtain the results.
+
 ```
 commond: python main.py
 ```

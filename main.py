@@ -1,9 +1,9 @@
 import pandas as pd
 import numpy as np
 from sklearn.feature_selection import f_classif
-# 读取 X_train.txt 和 y_train.txt
-df_x_train = pd.read_csv('data/X_train.txt', delimiter='\t')
-df_y_train = pd.read_csv('data/y_train.txt')
+# Read X_train.txt and y_train.txt
+df_x_train = pd.read_csv('data/X_train_0.2_wrong.txt', delimiter='\t')
+df_y_train = pd.read_csv('data/y_train_0.2_wrong.txt')
 X_train = df_x_train.copy()
 y_train = df_y_train.copy()
 f = 0
@@ -13,24 +13,24 @@ best_threshold = 0.867
 best_f = 0
 # for threshold in np.arange(0.5, 1.0, 0.01):
 for l in range(100):
-    # 合并 X_train 和 y_train
+    # Combine X_train and y_train
     form = df_y_train
 
     num_bins = 30
-    iv_values = []  # 存储各个特征的iv信息
+    iv_values = []  # Store IV information of each feature
 
-    All_label_counts = {}  # 存储统计的各个特征分箱后的比例以及数量分布信息
-    All_bounder = {}  # 用于存储各个特征的分箱的所有边界表
+    All_label_counts = {}  # Store the distribution information of each feature after binning
+    All_bounder = {}  # Store all boundary tables of each feature after binning
     for feature_column in df_x_train.columns:
         binned_data_hand, bin_boundaries = pd.qcut(df_x_train[feature_column], q=num_bins, labels=False,
                                                    retbins=True, duplicates='drop')
         form[f'binned_{feature_column}'] = binned_data_hand
         All_bounder[feature_column] = bin_boundaries
-        # 获取各个分箱的label为0和1的数量并保存在label_counts中
+        # Get the count of label 0 and 1 in each bin and save it in label_counts
         label_counts = form.groupby([f'binned_{feature_column}', 'label'], observed=False).size().unstack(
             fill_value=0).reset_index()
 
-        # 换算每个分箱的占比
+        # Calculate the proportion of each bin
         label_0_sum = label_counts[0].sum()
         # print(label_0_sum)
         label_counts[0] = label_counts[0] / label_0_sum
@@ -38,12 +38,12 @@ for l in range(100):
         label_1_sum = label_counts[1].sum()
         label_counts[1] = label_counts[1] / label_1_sum
 
-        # 每一个分箱的占比归一化处理（计算隶属度）
+        # Normalize the proportion of each bin (calculate membership)
         label_counts['ratio_0'] = label_counts[0] / (label_counts[0] + label_counts[1])
         label_counts['ratio_1'] = label_counts[1] / (label_counts[0] + label_counts[1])
         All_label_counts[feature_column] = label_counts
 
-        # 计算每个分箱的IV
+        # Calculate the IV of each bin
         use_label = label_counts.copy()
         epsilon = 1e-9
         use_label['iv_0_ratio'] = (use_label[0] + epsilon) / (use_label[0].sum() + epsilon)
@@ -56,18 +56,18 @@ for l in range(100):
     y_test = pd.read_csv('data/y_test.txt')
     with open('data/y_test.txt', 'r') as file:
         lines = file.readlines()
-        # 跳过第一行（列名）
+        # Skip the first line (column names)
         true_labels = [int(line.strip()) for line in lines[1:]]
     iv_sum = 0
 
-    # 归一化作为权重计算
-    # 使用 f_classif 进行特征选择
+    # Normalize as weights
+    # Use f_classif for feature selection
     f_scores, p_values = f_classif(X_train, y_train)
 
-    # 获取每个特征的 F-score
+    # Get the F-score of each feature
     feature_scores = f_scores / f_scores.sum()
 
-    # 将结果存储为列表
+    # Store the results as a list
     iv_values = list(feature_scores)
 
     Test_box = {}
@@ -116,10 +116,10 @@ for l in range(100):
     predicted_labels = predicted_labels.tolist()
     # print(type(predicted_labels))
 
-    # 初始化TP、TN、FP和FN的计数器
+    # Initialize counters for TP, TN, FP, and FN
     TP = TN = FP = FN = 0
 
-    # 计算TP、TN、FP和FN的数量
+    # Calculate the number of TP, TN, FP, and FN
     for predicted, true in zip(predicted_labels, true_labels):
         if predicted == 1 and true == 1:
             TP += 1
@@ -130,7 +130,7 @@ for l in range(100):
         elif predicted == 0 and true == 1:
             FN += 1
 
-    # 计算准确率、召回率和F1值
+    # Calculate accuracy, recall, and F1 score
     accuracy = (TP + TN) / (TP + TN + FP + FN)
     recall = TP / (TP + FN)
     precision = TP / (TP + FP)
@@ -141,16 +141,16 @@ for l in range(100):
     #     best_threshold = threshold
 
     if f1 > f:
-        print(f"第{l}次作为权重半监督模型的结果为：")
+        print(f"Result of SO-FCE for the {l}th time:")
         f = f1
-        print(f"准确率（Accuracy）: {accuracy}")
-        print(f"召回率（Recall）: {recall}")
-        print(f"精确率（precision）：{precision}")
-        print(f"F1值: {f1}")
+        print(f"Accuracy: {accuracy}")
+        print(f"Recall: {recall}")
+        print(f"precision：{precision}")
+        print(f"F1 Score: {f1}")
     else:
         # f = 0
         break
-    # ...............................................提取扩充................................................
+    # ...............................................Extract and Expand................................................
     X_test['ratio_1_iv'] = Test_box['ratio_1_iv']
     X_test['ratio_0_iv'] = Test_box['ratio_0_iv']
     X_test['pre_label'] = Test_box['predicted_label']
