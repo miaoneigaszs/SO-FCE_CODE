@@ -5,34 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="15e63fc7-d484-48e8-95d7-b4c9f9ee89b9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/X_all_train.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/X_test.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/X_train.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/X_train_0.05_wrong.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/X_train_0.10_wrong.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/X_train_0.15_wrong.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/X_train_0.20_wrong.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/X_train_0.25_wrong.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/label_part_sample.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/part_sample.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/y_all_train.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/y_test.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/y_train.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/y_train_0.05_wrong.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/y_train_0.10_wrong.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/y_train_0.15_wrong.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/y_train_0.20_wrong.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/y_train_0.25_wrong.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/false_sample.py" beforeDir="false" afterPath="$PROJECT_DIR$/false_sample.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pre_process.py" beforeDir="false" afterPath="$PROJECT_DIR$/pre_process.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/predict.py" beforeDir="false" afterPath="$PROJECT_DIR$/predict.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/train.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

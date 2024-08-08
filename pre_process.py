@@ -129,7 +129,7 @@ print("Training set size:", len(X_train))
 print("Test set size:", len(X_test))
 
 # Save to txt files
-# X_test.to_csv("data/X_test.txt", sep='\t', index=False)
-# X_train.to_csv("data/X_train.txt", sep='\t', index=False)
-# y_test.to_csv("data/y_test.txt", sep='\t', index=False)
-# y_train.to_csv("data/y_train.txt", sep='\t', index=False)
+X_test.to_csv("data/X_test.txt", sep='\t', index=False)
+X_train.to_csv("data/X_train.txt", sep='\t', index=False)
+y_test.to_csv("data/y_test.txt", sep='\t', index=False)
+y_train.to_csv("data/y_train.txt", sep='\t', index=False)
