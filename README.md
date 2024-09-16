@@ -1,6 +1,6 @@
 # SO-FCE: Self-Optimized Fuzzy Comprehensive Evaluation Method for Addressing Real-World Low-Quality Samples in WebRobot Detection 
 ### Description
-This repository is the open source code for our paper entitled "SO-FCE: Self-Optimized Fuzzy Comprehensive Evaluation Method for Addressing Real-World Low-Quality Samples in WebRobot Detection", which is under review in IEEE xxxx.
+This repository is the open source code for our paper entitled "SO-FCE: Self-Optimized Fuzzy Comprehensive Evaluation Method for Addressing Real-World Low-Quality Samples in WebRobot Detection", which is under review in Applied Soft Computing .
 
 We proposes a Web Robot behavior detection technique based on the self-optimizing fuzzy comprehensive evaluation method. The method provides an in-depth analysis of Web Robot's access behavior patterns from the session perspective,
 and combines the fuzzy comprehensive evaluation method and iterative self-optimization learning to optimize the fuzzy decision-making parameters and improve the accuracy and robustness of the detection.
